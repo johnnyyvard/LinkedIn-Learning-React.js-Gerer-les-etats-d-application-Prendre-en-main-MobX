@@ -1,12 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { observable, action } from "mobx";
+import { observer, inject } from "mobx-react";
 
+@inject('store')
+@observer
 class AddTask extends React.Component {
+    @observable newTaskTitle = '';
 
+    @action
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.onAddTask(this.newTask.value)
+        this.props.store.addTask(this.newTaskTitle);
+        this.newTaskTitle = '';
         this.props.history.push('/')
-    }
+    };
+
+    @action
+    handleInputChange = (e) => {
+        this.newTaskTitle = e.target.value;
+    };
 
     render() {
         return (
@@ -16,7 +28,7 @@ class AddTask extends React.Component {
                     <form className="card-body" onSubmit={e => this.handleSubmit(e)}>
                         <div className="form-group">
                             <label form="taskName">Nom de la tâche</label>
-                            <input type="text" className="form-control" name="taskName" id="taskName" required ref={input => this.newTask = input} />
+                            <input type="text" className="form-control" value={this.newTaskTitle} onChange={this.handleInputChange} />
                         </div>
                         <button type="submit" className="btn btn-primary">Créer</button>
                     </form>
@@ -26,4 +38,4 @@ class AddTask extends React.Component {
     }
 }
 
-export default AddTask
+export default AddTask;
