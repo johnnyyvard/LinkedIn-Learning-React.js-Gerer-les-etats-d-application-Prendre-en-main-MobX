@@ -1,27 +1,36 @@
-import React from 'react'
+import React from 'react';
+import { observer } from "mobx-react";
 
-class ToDo extends React.Component {
+const ToDo = observer(({ task }) => {
+    <li className={"list-group-item d-flex align-tiems-center " + (task.completed ? 'bg-success' : 'coucou')}>
+        {task.name}
+        <button className={"btn btn-sm ml-auto " + (task.completed ? 'bg-success' : 'btn-outline-success')} onClick={() => (task.completed = !task.completed)} >&#x2713;</button>
+    </li>
 
-    state = {
-        completed: this.props.task.completed
-    }
+});
 
-    toggleCompleted = () => {
-        this.setState(prevState => ({
-            completed: !prevState.completed
-        }))
-        this.props.onToggleCompleted(this.props.task.id)
-    }
+// class ToDo extends React.Component {
 
-    render() {
-        return (
-            <li className={"list-group-item d-flex align-tiems-center " + (this.state.completed? 'bg-success': null)}>
-                {this.props.task.name}
-                <button className={"btn btn-sm ml-auto " + (this.state.completed? 'bg-success': 'btn-outline-success')} onClick={() => this.toggleCompleted()} >&#x2713;</button>
-            </li>
+//     state = {
+//         completed: this.props.task.completed
+//     }
 
-        )
-    }
-}
+//     toggleCompleted = () => {
+//         this.setState(prevState => ({
+//             completed: !prevState.completed
+//         }))
+//         this.props.onToggleCompleted(this.props.task.id)
+//     }
 
-export default ToDo
+//     render() {
+//         return (
+//             <li className={"list-group-item d-flex align-tiems-center " + (this.state.completed ? 'bg-success' : null)}>
+//                 {this.props.task.name}
+//                 <button className={"btn btn-sm ml-auto " + (this.state.completed ? 'bg-success' : 'btn-outline-success')} onClick={() => this.toggleCompleted()} >&#x2713;</button>
+//             </li>
+
+//         )
+//     }
+// }
+
+export default ToDo;
