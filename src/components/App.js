@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ToDoList from './ToDoList';
 import NavBar from './NavBar';
 import AddTask from './AddTask';
@@ -8,7 +8,7 @@ import Devtools from "mobx-react-devtools";
 // import uniqueid from 'uniqueid';
 // import Fetching from './Fetching';
 
-class App extends React.Component {
+class App extends Component {
 
     // state = {
     //     tasks: [],
@@ -78,23 +78,21 @@ class App extends React.Component {
 
 
     render() {
-        // console.log('Bonjour de render')
-
         return (
             <section id="todo">
-                <Devtools></Devtools>
-                {/* {this.state.fetching? <Fetching /> : null} */}
+                <Devtools />
                 <BrowserRouter>
-                    <Switch>
-                        <Route path="/add-task" component={AddTask} />
-                        <Route path="/:filter?" component={ToDoList} />
-                    </Switch>
-                    <NavBar onDeleteCompleted={this.onDeleteCompleted} />
-
+                    <>
+                        <Switch>
+                            <Route path="/add-task" component={AddTask} />
+                            <Route path="/:filter?" component={ToDoList} />
+                        </Switch>
+                        <NavBar onDeleteCompleted={this.onDeleteCompleted} />
+                    </>
                 </BrowserRouter>
             </section>
         )
     }
 }
 
-export default App
+export default App;
