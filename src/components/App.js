@@ -3,7 +3,7 @@ import ToDoList from './ToDoList';
 import NavBar from './NavBar';
 import AddTask from './AddTask';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Devtools from "mobx-react-devtools";
+// import Devtools from "mobx-react-devtools";
 // import initialData from '../initialData';
 // import uniqueid from 'uniqueid';
 // import Fetching from './Fetching';
@@ -80,7 +80,7 @@ class App extends Component {
     render() {
         return (
             <section id="todo">
-                <Devtools />
+                {/* <Devtools /> */}
                 <BrowserRouter>
                     <>
                         <Switch>
