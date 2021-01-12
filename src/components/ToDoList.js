@@ -5,8 +5,8 @@ import ToDo from './ToDo';
 @inject('store')
 @observer
 class ToDoList extends Component {
-    render(){
-        const store =  this.props.store;
+    render() {
+        const store = this.props.store;
         return (
             <>
                 <h1 className="m-3">Liste de tâches</h1>

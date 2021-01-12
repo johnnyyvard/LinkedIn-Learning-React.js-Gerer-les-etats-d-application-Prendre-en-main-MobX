@@ -5,12 +5,12 @@ export default class TaskListModel {
     @observable tasks = [];
 
     @computed
-    get unfinishedTaskCount(){
+    get unfinishedTaskCount() {
         return this.tasks.filter(task => !task.completed).length;
     }
 
     @action
-    addTask(name){
+    addTask(name) {
         this.tasks.push(new TaskModel(name));
     }
 }

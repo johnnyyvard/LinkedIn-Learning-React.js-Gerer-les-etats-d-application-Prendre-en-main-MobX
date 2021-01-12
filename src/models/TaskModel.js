@@ -6,7 +6,7 @@ export default class TaskModel {
     @observable name;
     @observable completed = false;
 
-    constructor(name){
+    constructor(name) {
         this.name = name;
     }
 }
